@@ -6,13 +6,13 @@ const more = document.getElementById("more");
 const apiURL = "https://api.lyrics.ovh";
 
 async function searchSongs(term) {
-  const res = await fetch(${apiURL}/suggest/${term});
+  const res = await fetch(`${apiURL}/suggest/${term}`);
   const data = await res.json();
   showData(data);
 }
 
 async function getLyrics(artist, songTitle) {
-  const res = await fetch(${apiURL}/v1/${artist}/${songTitle});
+  const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
   const data = await res.json();
   console.log(artist, songTitle);
   if (data.error) {
@@ -29,7 +29,7 @@ async function getLyrics(artist, songTitle) {
 }
 
 async function getMoreSongs(url) {
-  const res = await fetch(https://cors-anywhere.herokuapp.com/${url});  
+  const res = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);  
   const data = await res.json();
   showData(data);
 }
@@ -52,12 +52,12 @@ function showData(data) {
     more.innerHTML = `
                     ${
                       data.prev
-                        ? <button class="btn" onclick="getMoreSongs('${data.prev}')">Prev</button>
+                        ? `<button class="btn" onclick="getMoreSongs('${data.prev}')">Prev</button>`
                         : ""
                     }
                     ${
                       data.next
-                        ? <button class="btn" onclick="getMoreSongs('${data.next}')">Next</button>
+                        ? `<button class="btn" onclick="getMoreSongs('${data.next}')">Next</button>`
                         : ""
                     }
                     `;
